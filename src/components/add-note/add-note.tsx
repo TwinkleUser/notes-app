@@ -1,5 +1,4 @@
-import { Component, Prop, h, State } from '@stencil/core';
-// import { format } from '../../utils/utils';
+import { Component, Prop, h, State, Listen } from '@stencil/core';
 
 @Component({
   tag: 'add-note',
@@ -7,43 +6,32 @@ import { Component, Prop, h, State } from '@stencil/core';
   shadow: true,
 })
 export class AddNote {
-  /**
-   * The first name
-   */
-  @Prop() handleAddNote: any;
+  @Prop() handleAddNote: (e: any) => void;
 
-  @State() noteText: any='';
+  @State() noteText: any = '';
 
   private charLimit = 300;
-  private handleChange(event): void {
-    if(this.charLimit - event.target.value.length>=0){
-        this.noteText = event.target.value;
-    }
-   
-  };
 
-  private handleSaveClick(): void {
-    console.log(this.noteText);
-    if(this.noteText.trim().length>0){
-        this.handleAddNote(this.noteText);
-        this.noteText ='';
+  handleChange(event): void {
+    if (this.charLimit - event.target.value.length >= 0) {
+      this.noteText = event.target.value;
     }
-   
-   
-  };
+  }
 
   render() {
     return (
-        <div class="note new">
-        {/*the text area for our input*/}
-            <textarea  cols={10} rows={8} placeholder="Type to add a new note..."
-            onChange={this.handleChange.bind(this)} value={this.noteText}
-            ></textarea>
-            <div class="note-footer">
-                <small>{this.charLimit - this.noteText.length} Remaining</small>
-                <button class="save" onClick={this.handleSaveClick.bind(this)}>Save</button>
-            </div>
+      <div class="note new">
+        <textarea cols={10} rows={8} placeholder="Type to add a new note..." onChange={this.handleChange.bind(this)} value={this.noteText}></textarea>
+        <div class="note-footer">
+          <small>{this.charLimit - this.noteText.length} Remaining</small>
+          <button
+            class="save"
+              onClick={() =>{this.handleAddNote(this.noteText);this.noteText=''}}
+          >
+            Save
+          </button>
         </div>
-    )
-}
+      </div>
+    );
+  }
 }
