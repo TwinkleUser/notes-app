@@ -1,0 +1,9 @@
+.note-footer{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+ 
+  .note.new{
+    background-color: aquamarine;
+  }

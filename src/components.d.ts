@@ -6,56 +6,121 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface AddNote {
         /**
           * The first name
          */
-        "first": string;
+        "handleAddNote": any;
+    }
+    interface NotesComponent {
         /**
           * The last name
          */
-        "last": string;
+        "date": any;
+        "handleDelete": any;
         /**
           * The middle name
          */
-        "middle": string;
+        "text": string;
+    }
+    interface NotesDashboard {
+    }
+    interface NotesList {
+        /**
+          * The middle name
+         */
+        "handleAddNote": string;
+        /**
+          * The last name
+         */
+        "handleDelete": any;
+        /**
+          * The first name
+         */
+        "notes": any;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAddNoteElement extends Components.AddNote, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAddNoteElement: {
+        prototype: HTMLAddNoteElement;
+        new (): HTMLAddNoteElement;
+    };
+    interface HTMLNotesComponentElement extends Components.NotesComponent, HTMLStencilElement {
+    }
+    var HTMLNotesComponentElement: {
+        prototype: HTMLNotesComponentElement;
+        new (): HTMLNotesComponentElement;
+    };
+    interface HTMLNotesDashboardElement extends Components.NotesDashboard, HTMLStencilElement {
+    }
+    var HTMLNotesDashboardElement: {
+        prototype: HTMLNotesDashboardElement;
+        new (): HTMLNotesDashboardElement;
+    };
+    interface HTMLNotesListElement extends Components.NotesList, HTMLStencilElement {
+    }
+    var HTMLNotesListElement: {
+        prototype: HTMLNotesListElement;
+        new (): HTMLNotesListElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "add-note": HTMLAddNoteElement;
+        "notes-component": HTMLNotesComponentElement;
+        "notes-dashboard": HTMLNotesDashboardElement;
+        "notes-list": HTMLNotesListElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface AddNote {
         /**
           * The first name
          */
-        "first"?: string;
+        "handleAddNote"?: any;
+    }
+    interface NotesComponent {
         /**
           * The last name
          */
-        "last"?: string;
+        "date"?: any;
+        "handleDelete"?: any;
         /**
           * The middle name
          */
-        "middle"?: string;
+        "text"?: string;
+    }
+    interface NotesDashboard {
+    }
+    interface NotesList {
+        /**
+          * The middle name
+         */
+        "handleAddNote"?: string;
+        /**
+          * The last name
+         */
+        "handleDelete"?: any;
+        /**
+          * The first name
+         */
+        "notes"?: any;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "add-note": AddNote;
+        "notes-component": NotesComponent;
+        "notes-dashboard": NotesDashboard;
+        "notes-list": NotesList;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "add-note": LocalJSX.AddNote & JSXBase.HTMLAttributes<HTMLAddNoteElement>;
+            "notes-component": LocalJSX.NotesComponent & JSXBase.HTMLAttributes<HTMLNotesComponentElement>;
+            "notes-dashboard": LocalJSX.NotesDashboard & JSXBase.HTMLAttributes<HTMLNotesDashboardElement>;
+            "notes-list": LocalJSX.NotesList & JSXBase.HTMLAttributes<HTMLNotesListElement>;
         }
     }
 }
