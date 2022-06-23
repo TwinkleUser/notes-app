@@ -7,37 +7,24 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AddNote {
-        /**
-          * The first name
-         */
-        "handleAddNote": any;
+        "handleAddNote": (e: any) => void;
+    }
+    interface HeaderComponent {
     }
     interface NotesComponent {
-        /**
-          * The last name
-         */
         "date": any;
         "handleDelete": any;
-        /**
-          * The middle name
-         */
         "text": string;
     }
     interface NotesDashboard {
     }
     interface NotesList {
-        /**
-          * The middle name
-         */
-        "handleAddNote": string;
-        /**
-          * The last name
-         */
+        "handleAddNote": (e: any) => void;
         "handleDelete": any;
-        /**
-          * The first name
-         */
         "notes": any;
+    }
+    interface SearchComponent {
+        "handleSearch": (text:any)=>any;
     }
 }
 declare global {
@@ -46,6 +33,12 @@ declare global {
     var HTMLAddNoteElement: {
         prototype: HTMLAddNoteElement;
         new (): HTMLAddNoteElement;
+    };
+    interface HTMLHeaderComponentElement extends Components.HeaderComponent, HTMLStencilElement {
+    }
+    var HTMLHeaderComponentElement: {
+        prototype: HTMLHeaderComponentElement;
+        new (): HTMLHeaderComponentElement;
     };
     interface HTMLNotesComponentElement extends Components.NotesComponent, HTMLStencilElement {
     }
@@ -65,52 +58,49 @@ declare global {
         prototype: HTMLNotesListElement;
         new (): HTMLNotesListElement;
     };
+    interface HTMLSearchComponentElement extends Components.SearchComponent, HTMLStencilElement {
+    }
+    var HTMLSearchComponentElement: {
+        prototype: HTMLSearchComponentElement;
+        new (): HTMLSearchComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "add-note": HTMLAddNoteElement;
+        "header-component": HTMLHeaderComponentElement;
         "notes-component": HTMLNotesComponentElement;
         "notes-dashboard": HTMLNotesDashboardElement;
         "notes-list": HTMLNotesListElement;
+        "search-component": HTMLSearchComponentElement;
     }
 }
 declare namespace LocalJSX {
     interface AddNote {
-        /**
-          * The first name
-         */
-        "handleAddNote"?: any;
+        "handleAddNote"?: (e: any) => void;
+    }
+    interface HeaderComponent {
     }
     interface NotesComponent {
-        /**
-          * The last name
-         */
         "date"?: any;
         "handleDelete"?: any;
-        /**
-          * The middle name
-         */
         "text"?: string;
     }
     interface NotesDashboard {
     }
     interface NotesList {
-        /**
-          * The middle name
-         */
-        "handleAddNote"?: string;
-        /**
-          * The last name
-         */
+        "handleAddNote"?: (e: any) => void;
         "handleDelete"?: any;
-        /**
-          * The first name
-         */
         "notes"?: any;
+    }
+    interface SearchComponent {
+        "handleSearch"?: (text:any)=>any;
     }
     interface IntrinsicElements {
         "add-note": AddNote;
+        "header-component": HeaderComponent;
         "notes-component": NotesComponent;
         "notes-dashboard": NotesDashboard;
         "notes-list": NotesList;
+        "search-component": SearchComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -118,9 +108,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "add-note": LocalJSX.AddNote & JSXBase.HTMLAttributes<HTMLAddNoteElement>;
+            "header-component": LocalJSX.HeaderComponent & JSXBase.HTMLAttributes<HTMLHeaderComponentElement>;
             "notes-component": LocalJSX.NotesComponent & JSXBase.HTMLAttributes<HTMLNotesComponentElement>;
             "notes-dashboard": LocalJSX.NotesDashboard & JSXBase.HTMLAttributes<HTMLNotesDashboardElement>;
             "notes-list": LocalJSX.NotesList & JSXBase.HTMLAttributes<HTMLNotesListElement>;
+            "search-component": LocalJSX.SearchComponent & JSXBase.HTMLAttributes<HTMLSearchComponentElement>;
         }
     }
 }
