@@ -3,6 +3,7 @@ import { NotesList } from '../notes-list/notes-list';
  
 // import { format } from '../../utils/utils';
 import {nanoid} from 'nanoid';
+import { AddNote } from '../add-note/add-note';
 
 @Component({
   tag: 'notes-dashboard',
@@ -31,12 +32,12 @@ export class NotesDashboard {
  
 ]
 
-componentWillLoad(){
-    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
-  if(savedNotes){
-    this.notes = savedNotes;
-  }
-}
+// componentWillLoad(){
+//     const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
+//   if(savedNotes){
+//     this.notes = savedNotes;
+//   }
+// }
 
 // componentShouldUpdate(newVal:any, oldVal:any, propName:any)
 // {
@@ -48,7 +49,7 @@ componentWillLoad(){
 //     localStorage.setItem('react-notes-app-data',JSON.stringify(this.notes))
 //   },[this.notes])
 
-private addNotes(text:string): void {
+private addNotes(text:any): void {
     const date = new Date();
     const newNote = {
       id:nanoid(),
@@ -71,7 +72,7 @@ private addNotes(text:string): void {
 
   render() {
     return <div class="container">
-        <NotesList 
+        <notes-list 
         notes={this.notes}
          handleAddNote={this.addNotes} 
          handleDelete={this.deletingNote}/>

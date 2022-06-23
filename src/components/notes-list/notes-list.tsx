@@ -1,6 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
-import { AddNote } from '../add-note/add-note';
-import { NotesComponent } from '../notes-component/notes-component';
+// import { AddNote } from '../add-note/add-note';
+// import { NotesComponent } from '../notes-component/notes-component';
 // import {Notes} from './notes';
 // import { format } from '../../utils/utils';
 
@@ -10,36 +10,30 @@ import { NotesComponent } from '../notes-component/notes-component';
   shadow: true,
 })
 export class NotesList {
-  /**
-   * The first name
-   */
+  
   @Prop() notes: any;
 
-  /**
-   * The middle name
-   */
-  @Prop() handleAddNote: string;
+  @Prop() handleAddNote: any;
 
-  /**
-   * The last name
-   */
   @Prop() handleDelete: any;
 
+  // constructor(){}
 
-//   private getText(): string {
-//     return format(this.first, this.middle, this.last);
-//   }
-
+  // componentDidLoad()
+  // {
+  //   console.log(this.notes);
+  // }
+ 
   render() {
     return (
         <div class="notes-list">
            {this.notes.map((note)=>
-               <NotesComponent id={note.id} text={note.text} date={note.date}
+               <notes-component id={note.id} text={note.text} date={note.date}
                handleDelete={this.handleDelete}
                />
            )}
-           <AddNote handleAddNote={this.handleAddNote}/>
+           <add-note handleAddNote={this.handleAddNote}/>
         </div>
-    )
+    );
 }
 }
