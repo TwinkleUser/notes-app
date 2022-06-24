@@ -13,18 +13,21 @@ export namespace Components {
     }
     interface NotesComponent {
         "date": any;
-        "handleDelete": any;
+        "handleDelete": (id: any) => void;
+        "handleEdit": (id: any, text: string) => void;
+        "id": string;
         "text": string;
     }
     interface NotesDashboard {
     }
     interface NotesList {
         "handleAddNote": (e: any) => void;
-        "handleDelete": any;
+        "handleDelete": (id: any) => void;
+        "handleEdit": (id: any, text: string) => void;
         "notes": any;
     }
     interface SearchComponent {
-        "handleSearch": (text:any)=>any;
+        "handleSearch": (text: any) => any;
     }
 }
 declare global {
@@ -81,18 +84,21 @@ declare namespace LocalJSX {
     }
     interface NotesComponent {
         "date"?: any;
-        "handleDelete"?: any;
+        "handleDelete"?: (id: any) => void;
+        "handleEdit"?: (id: any, text: string) => void;
+        "id"?: string;
         "text"?: string;
     }
     interface NotesDashboard {
     }
     interface NotesList {
         "handleAddNote"?: (e: any) => void;
-        "handleDelete"?: any;
+        "handleDelete"?: (id: any) => void;
+        "handleEdit"?: (id: any, text: string) => void;
         "notes"?: any;
     }
     interface SearchComponent {
-        "handleSearch"?: (text:any)=>any;
+        "handleSearch"?: (text: any) => any;
     }
     interface IntrinsicElements {
         "add-note": AddNote;

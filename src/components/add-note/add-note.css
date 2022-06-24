@@ -5,5 +5,13 @@
   }
  
   .note.new{
-    background-color: #a3a00b;
+    background-image: linear-gradient(to top, #a3a00b 0%, #3cba92 100%);
+    white-space: pre-wrap;
+     border-radius: 10px;
+     padding: 1rem;
+     min-height: 170px;
+     max-width:170px ;
+     display: flex;
+     flex-direction: column;
+   justify-content: space-between;
   }

@@ -10,13 +10,21 @@ export class NotesList {
 
   @Prop() handleAddNote: (e: any) => void;
 
-  @Prop() handleDelete: any;
+  @Prop() handleDelete: (id: any) => void;
+
+  @Prop() handleEdit: (id: any, text: string) => void;
 
   render() {
     return (
       <div class="notes-list">
         {this.notes.map(note => (
-          <notes-component id={note.id} text={note.text} date={note.date} handleDelete={this.handleDelete} />
+          <notes-component
+            id={note.id}
+            text={note.text}
+            date={note.date}
+            handleDelete={id => this.handleDelete(id)}
+            handleEdit={(id: any, text: string) => this.handleEdit(id, text)}
+          />
         ))}
         <add-note handleAddNote={e => this.handleAddNote(e)} />
       </div>
