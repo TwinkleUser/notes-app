@@ -32,10 +32,10 @@ export class NotesComponent {
   }
 
   @Listen('click')
-  enableEditing() {
+  enableEditing(event) {
     this.isUpdate = true;
+    event.stopPropagation();
   }
-
 
   render() {
     return (
@@ -48,9 +48,10 @@ export class NotesComponent {
           {this.isUpdate && (
             <button
               class="save"
-              onClick={() => {
+              onClick={e => {
                 this.handleEdit(this.id, this.updatedText);
                 this.isUpdate = false;
+                e.stopPropagation();
               }}
             >
               Update

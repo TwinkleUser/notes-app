@@ -64,7 +64,7 @@ export class NotesDashboard {
     this.notes = newNotes;
   }
 
-  private editNote(id: any, text: any): void {
+  public editNote(id: any, text: any): void {
     const newState = this.notes.map(obj => {
       if (obj.id === id) {
         return { ...obj, text: text };
