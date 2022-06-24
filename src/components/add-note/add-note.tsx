@@ -6,9 +6,9 @@ import { Component, Prop, h, State, Listen } from '@stencil/core';
   shadow: true,
 })
 export class AddNote {
-  @Prop() handleAddNote: (e: any) => void;
+  @Prop() handleAddNote: (text: string) => void;
 
-  @State() noteText: any = '';
+  @State() noteText: string = '';
 
   private charLimit = 300;
 

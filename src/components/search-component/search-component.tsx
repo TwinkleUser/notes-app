@@ -6,7 +6,7 @@ import { Component, Prop, h, State } from '@stencil/core';
   shadow: true,
 })
 export class SearchComponent {
-  @Prop() handleSearch: (text: any) => any;
+  @Prop() handleSearch: (text: string) => void;
 
   @State() searchText: string='';
 

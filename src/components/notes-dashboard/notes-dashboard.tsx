@@ -1,7 +1,12 @@
 import { Component, Prop, h, State, Watch, EventEmitter, Event, Listen } from '@stencil/core';
 import { nanoid } from 'nanoid';
 
-const defaultNotes = [
+export interface Notes {
+  id: string;
+  text: string;
+  date: string;
+}
+const defaultNotes: Notes[] = [
   {
     id: nanoid(),
     text: 'This is my first note',
@@ -26,12 +31,12 @@ const defaultNotes = [
 })
 export class NotesDashboard {
   @State() searchText: string = '';
-  @State() notes: any = defaultNotes;
+  @State() notes: Notes[] = defaultNotes;
 
   @Event() outsideClick: EventEmitter<boolean>;
 
-  @Listen('click', {target:'window'})
-  callChildComponent(){
+  @Listen('click', { target: 'window' })
+  callChildComponent() {
     this.outsideClick.emit(true);
   }
 
@@ -48,7 +53,7 @@ export class NotesDashboard {
     localStorage.setItem('stencils-notes-data', JSON.stringify(this.notes));
   }
 
-  public addNotes(text: any): void {
+  public addNotes(text: string): void {
     if (text.trim().length > 0) {
       const date = new Date();
       const newNote = {
@@ -62,16 +67,16 @@ export class NotesDashboard {
     }
   }
 
-  private handleSearch(text: any) {
+  private handleSearch(text: string) {
     this.searchText = text;
   }
 
-  private deletingNote(id: any): void {
+  private deletingNote(id: string): void {
     const newNotes = this.notes.filter(note => note.id !== id);
     this.notes = newNotes;
   }
 
-  public editNote(id: any, text: any): void {
+  public editNote(id: string, text: string): void {
     const newState = this.notes.map(obj => {
       if (obj.id === id) {
         return { ...obj, text: text };
@@ -90,7 +95,7 @@ export class NotesDashboard {
           notes={this.notes.filter(note => note.text.toLowerCase().includes(this.searchText))}
           handleAddNote={e => this.addNotes(e)}
           handleDelete={id => this.deletingNote(id)}
-          handleEdit={(id: any, text: string) => this.editNote(id, text)}
+          handleEdit={(id: string, text: string) => this.editNote(id, text)}
         />
       </div>
     );

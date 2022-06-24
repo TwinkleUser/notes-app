@@ -10,11 +10,11 @@ export class NotesComponent {
 
   @Prop() id: string;
 
-  @Prop() date: any;
+  @Prop() date: string;
 
-  @Prop() handleDelete: (id: any) => void;
+  @Prop() handleDelete: (id: string) => void;
 
-  @Prop() handleEdit: (id: any, text: string) => void;
+  @Prop() handleEdit: (id: string, text: string) => void;
 
   @State() updatedText: string;
 

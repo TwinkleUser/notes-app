@@ -5,29 +5,30 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Notes } from "./components/notes-dashboard/notes-dashboard";
 export namespace Components {
     interface AddNote {
-        "handleAddNote": (e: any) => void;
+        "handleAddNote": (text: string) => void;
     }
     interface HeaderComponent {
     }
     interface NotesComponent {
-        "date": any;
-        "handleDelete": (id: any) => void;
-        "handleEdit": (id: any, text: string) => void;
+        "date": string;
+        "handleDelete": (id: string) => void;
+        "handleEdit": (id: string, text: string) => void;
         "id": string;
         "text": string;
     }
     interface NotesDashboard {
     }
     interface NotesList {
-        "handleAddNote": (e: any) => void;
-        "handleDelete": (id: any) => void;
-        "handleEdit": (id: any, text: string) => void;
-        "notes": any;
+        "handleAddNote": (text: string) => void;
+        "handleDelete": (id: string) => void;
+        "handleEdit": (id: string, text: string) => void;
+        "notes": Notes[];
     }
     interface SearchComponent {
-        "handleSearch": (text: any) => any;
+        "handleSearch": (text: string) => void;
     }
 }
 export interface NotesDashboardCustomEvent<T> extends CustomEvent<T> {
@@ -82,14 +83,14 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AddNote {
-        "handleAddNote"?: (e: any) => void;
+        "handleAddNote"?: (text: string) => void;
     }
     interface HeaderComponent {
     }
     interface NotesComponent {
-        "date"?: any;
-        "handleDelete"?: (id: any) => void;
-        "handleEdit"?: (id: any, text: string) => void;
+        "date"?: string;
+        "handleDelete"?: (id: string) => void;
+        "handleEdit"?: (id: string, text: string) => void;
         "id"?: string;
         "text"?: string;
     }
@@ -97,13 +98,13 @@ declare namespace LocalJSX {
         "onOutsideClick"?: (event: NotesDashboardCustomEvent<boolean>) => void;
     }
     interface NotesList {
-        "handleAddNote"?: (e: any) => void;
-        "handleDelete"?: (id: any) => void;
-        "handleEdit"?: (id: any, text: string) => void;
-        "notes"?: any;
+        "handleAddNote"?: (text: string) => void;
+        "handleDelete"?: (id: string) => void;
+        "handleEdit"?: (id: string, text: string) => void;
+        "notes"?: Notes[];
     }
     interface SearchComponent {
-        "handleSearch"?: (text: any) => any;
+        "handleSearch"?: (text: string) => void;
     }
     interface IntrinsicElements {
         "add-note": AddNote;

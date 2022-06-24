@@ -1,4 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
+import { Notes } from '../notes-dashboard/notes-dashboard';
 
 @Component({
   tag: 'notes-list',
@@ -6,13 +7,13 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class NotesList {
-  @Prop() notes: any;
+  @Prop() notes: Notes[];
 
-  @Prop() handleAddNote: (e: any) => void;
+  @Prop() handleAddNote: (text: string) => void;
 
-  @Prop() handleDelete: (id: any) => void;
+  @Prop() handleDelete: (id: string) => void;
 
-  @Prop() handleEdit: (id: any, text: string) => void;
+  @Prop() handleEdit: (id: string, text: string) => void;
 
   render() {
     return (
@@ -23,10 +24,10 @@ export class NotesList {
             text={note.text}
             date={note.date}
             handleDelete={id => this.handleDelete(id)}
-            handleEdit={(id: any, text: string) => this.handleEdit(id, text)}
+            handleEdit={(id: string, text: string) => this.handleEdit(id, text)}
           />
         ))}
-        <add-note handleAddNote={e => this.handleAddNote(e)} />
+        <add-note handleAddNote={text => this.handleAddNote(text)} />
       </div>
     );
   }
