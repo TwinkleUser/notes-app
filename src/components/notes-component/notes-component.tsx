@@ -37,6 +37,12 @@ export class NotesComponent {
     event.stopPropagation();
   }
 
+  @Listen('outsideClick', { target: 'document' })
+  getChangedValue(event: CustomEvent) {
+    if (event.detail) {
+      this.isUpdate = false;
+    }
+  }
   render() {
     return (
       <div class="note">

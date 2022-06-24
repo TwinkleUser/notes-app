@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Watch } from '@stencil/core';
+import { Component, Prop, h, State, Watch, EventEmitter, Event, Listen } from '@stencil/core';
 import { nanoid } from 'nanoid';
 
 const defaultNotes = [
@@ -27,6 +27,13 @@ const defaultNotes = [
 export class NotesDashboard {
   @State() searchText: string = '';
   @State() notes: any = defaultNotes;
+
+  @Event() outsideClick: EventEmitter<boolean>;
+
+  @Listen('click', {target:'window'})
+  callChildComponent(){
+    this.outsideClick.emit(true);
+  }
 
   componentWillLoad() {
     const savedNotes = JSON.parse(localStorage.getItem('stencils-notes-data')) || defaultNotes;

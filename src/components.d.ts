@@ -30,6 +30,10 @@ export namespace Components {
         "handleSearch": (text: any) => any;
     }
 }
+export interface NotesDashboardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLNotesDashboardElement;
+}
 declare global {
     interface HTMLAddNoteElement extends Components.AddNote, HTMLStencilElement {
     }
@@ -90,6 +94,7 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface NotesDashboard {
+        "onOutsideClick"?: (event: NotesDashboardCustomEvent<boolean>) => void;
     }
     interface NotesList {
         "handleAddNote"?: (e: any) => void;
