@@ -10,7 +10,7 @@ export class HeaderComponent {
     return (
       <div class="header">
         <h1>
-          <span style={{ color: '#308d46' }}>Notes</span> Dashboard
+          <span style={{ color: 'rgb(141, 139, 48)' }}>Notes</span> Dashboard
         </h1>
         {/* <button onClick={()=>handleToggleDarkMode((previousDarkMode)=>!previousDarkMode)} className="save">Toggle Mode</button> */}
       </div>

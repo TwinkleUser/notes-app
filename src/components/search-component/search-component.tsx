@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, State } from '@stencil/core';
 
 @Component({
   tag: 'search-component',
@@ -7,6 +7,9 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class SearchComponent {
   @Prop() handleSearch: (text: any) => any;
+
+  @State() searchText: string='';
+
   render() {
     return (
       <div class="search">
@@ -14,10 +17,17 @@ export class SearchComponent {
           type="text"
           placeholder="Search for your notes..."
           onInput={event => {
-            console.log(event.target);
+            this.searchText= (event.target as HTMLInputElement).value;
             this.handleSearch((event.target as HTMLInputElement).value);
           }}
+          value={this.searchText}
         />
+        <button
+            class="clear"
+              onClick={() =>{this.handleSearch('');this.searchText=''}}
+          >
+            Clear
+          </button>
       </div>
     );
   }

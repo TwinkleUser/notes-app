@@ -1,5 +1,5 @@
 .search{
-    display: flex;
+    display: block;
     align-items: center;
     background-color: rgb(233, 233, 233);
     border-radius: 10px;
@@ -14,4 +14,14 @@
   }
   .search input:focus{
     outline: blue;
+  }
+  .clear{
+    position: relative;
+    float: right;
+    right: -24px;
+    top: -24px;
+    cursor: pointer;
+    padding: 25.9px 28px;
+    background-color: rgb(141 139 48);
+    border: none;
   }
