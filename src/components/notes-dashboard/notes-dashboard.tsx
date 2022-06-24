@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Watch, EventEmitter, Event, Listen } from '@stencil/core';
+import { Component, h, State, EventEmitter, Event, Listen } from '@stencil/core';
 import { nanoid } from 'nanoid';
 
 export interface Notes {
@@ -30,7 +30,7 @@ const defaultNotes: Notes[] = [
   shadow: true,
 })
 export class NotesDashboard {
-  @State() searchText: string = '';
+  @State() searchText = '';
   @State() notes: Notes[] = defaultNotes;
 
   @Event() outsideClick: EventEmitter<boolean>;

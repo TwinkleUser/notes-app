@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Listen } from '@stencil/core';
+import { Component, Prop, h, State } from '@stencil/core';
 
 @Component({
   tag: 'add-note',
@@ -8,7 +8,7 @@ import { Component, Prop, h, State, Listen } from '@stencil/core';
 export class AddNote {
   @Prop() handleAddNote: (text: string) => void;
 
-  @State() noteText: string = '';
+  @State() noteText = '' ;
 
   private charLimit = 300;
 

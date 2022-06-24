@@ -18,7 +18,7 @@ export class NotesComponent {
 
   @State() updatedText: string;
 
-  @State() isUpdate: boolean = false;
+  @State() isUpdate = false;
 
   componentWillLoad() {
     this.updatedText = this.text;
