@@ -54,7 +54,7 @@ export class NotesDashboard {
   }
 
   public addNotes(text: string): void {
-    if (text.trim().length > 0) {
+    if (text.trim().length >= 0) {
       const date = new Date();
       const newNote = {
         id: nanoid(),

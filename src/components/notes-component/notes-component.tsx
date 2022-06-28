@@ -23,10 +23,10 @@ export class NotesComponent {
   componentWillLoad() {
     this.updatedText = this.text;
   }
+  private  charLimit = 300;
 
   handleChange(event): void {
-    const charLimit = 300;
-    if (charLimit - event.target.value.length >= 0) {
+    if (this.charLimit - event.target.value.length >= 0) {
       this.updatedText = event.target.value;
     }
   }
@@ -46,7 +46,7 @@ export class NotesComponent {
   render() {
     return (
       <div class="note">
-        {this.isUpdate && <textarea cols={10} rows={8} placeholder="Type to add a new note..." onChange={this.handleChange.bind(this)} value={this.updatedText}></textarea>}
+        {this.isUpdate && <textarea maxLength={this.charLimit} cols={10} rows={8} placeholder="Type to add a new note..." onInput={this.handleChange.bind(this)} value={this.updatedText}></textarea>}
         {!this.isUpdate && <span>{this.updatedText}</span>}
 
         <div class="note-footer">
@@ -73,6 +73,7 @@ export class NotesComponent {
             Delete
           </button>
         </div>
+        <small>{this.charLimit - this.updatedText.length} Remaining</small>
       </div>
     );
   }

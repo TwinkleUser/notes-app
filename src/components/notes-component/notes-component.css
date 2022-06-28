@@ -10,6 +10,10 @@
   color: black;
   background-color: rgb(230 230 230);
   border: 1.5px solid rgb(141 139 48);
+  overflow-wrap: break-word;
+  overflow: auto;
+  text-overflow: ellipsis;
+  max-height: 15ch;
   }
   .note-footer{
     display: flex;
