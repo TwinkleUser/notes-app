@@ -47,7 +47,7 @@ export class NotesComponent {
     return (
       <div class="note">
         {this.isUpdate && <textarea maxLength={this.charLimit} cols={10} rows={8} placeholder="Type to add a new note..." onInput={this.handleChange.bind(this)} value={this.updatedText}></textarea>}
-        {!this.isUpdate && <span>{this.updatedText}</span>}
+        {!this.isUpdate && <span class="noteText">{this.updatedText}</span>}
 
         <div class="note-footer">
           <small>{this.date}</small>
